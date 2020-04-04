@@ -16,8 +16,8 @@
 (def storage (r/atom {:trades []}))
 
 (def ws (new js/WebSocket
-             (str "ws://localhost:8080/btc-usd")
-             ;(str "ws://95.217.184.184:8080/btc-usd")
+             ;(str "ws://localhost:8080/btc-usd")
+             (str "ws://95.217.184.184:8080/btc-usd")
              ))
 
 (set!
