@@ -15,7 +15,10 @@
 
 (def storage (r/atom {:trades []}))
 
-(def ws (new js/WebSocket (str "ws://95.217.184.184:8080/btc-usd")))
+(def ws (new js/WebSocket
+             (str "ws://localhost:8080/btc-usd")
+             ;(str "ws://95.217.184.184:8080/btc-usd")
+             ))
 
 (set!
   (.-onmessage ws)
@@ -125,26 +128,30 @@ data
     ) )
 
 
-(defn tabs []
+(defn tabs [id coll]
   (r/create-class
     {
      :component-did-mount 
      (fn []
-       (materialize/Tabs.init (js/document.getElementById "tabs") #js {})
+       (materialize/Tabs.init (js/document.getElementById id) #js {})
        )
      :reagent-render
      (fn []
-  [:div.container
-   [:ul#tabs.tabs.z-depth-1
-    [:li.tab.col.s3 [:a.indigo-text {:href "#test-swipe-1"} "My nodes"]]
-    [:li.tab.col.s3 [:a {:href "#test-swipe-2"} "Market data"]]
+  [:div
+   [:ul.tabs.z-depth-1 {:id id}
+    (map-indexed
+      (fn [i {:keys [title]}]
+        [:li.tab.col.s3 [:a.indigo-text {:href (str "#swipe-"id i)} title]])
+      coll)
     ]
-   [:div#test-swipe-1.col.s12
-    
-    ]
-   [:div#test-swipe-2.col.s12
-    
-    ]]
+   (map-indexed
+    (fn [i {:keys [text]}] 
+      [:div.col.s12
+       {:id (str "swipe-"id i) :style {:padding-top "30px"}}
+    (seq text)
+    ])
+    coll)
+   ]
   )}))
 
 (defn landing []
@@ -174,12 +181,12 @@ data
        [:li
         {:class (str "collection-item "
                      (case (:side trade)
-                       :buy "green lighten-5"
-                       :sell "red lighten-5"
+                       :buy "teal lighten-5"
+                       :sell "pink lighten-5"
                        ))
          :style {:position "relative"}} 
-        [:p.center 
-         "$ "(int (:price trade))
+        [:h5.center 
+         "$"(int (:price trade))
          ]
         [:p {:style {:position "absolute" :left "30px" :top "10px"}} 
          [:b (pprint/cl-format nil "~,2f" (:amount trade))"₿"]
@@ -187,8 +194,8 @@ data
          ]
         [:div {:style {:position "absolute" :right "30px" :top "20px"}}
          (case (:side trade)
-           :buy [:i.material-icons.green "arrow_drop_up"]
-           :sell [:i.material-icons.red "arrow_drop_down"]
+           :buy [:i.material-icons.teal "arrow_drop_up"]
+           :sell [:i.material-icons.pink "arrow_drop_down"]
            nil)]
         ])
      (reverse (take-last 10 (:trades @storage)))
@@ -202,7 +209,7 @@ data
    [:div.banner
     {:style 
      {:opacity 1
-      :margin-bottom "20px"
+      ;:margin-bottom "20px"
       :background "url(city.jpeg)"
       :background-size "cover" :background-position "bottom"
       :height "800px" :width "100%"
@@ -223,6 +230,54 @@ data
     
      
    ;[statistics]
+   [:div.white-text.deep-purple.darken-1 {:style {:margin 0 :position "relative" :display "block"
+                                  :padding-top "60px" :padding-bottom "60px"}}
+    [:div.container
+     [:h3 "Maintain Your Growth"]
+     
+     [:div.card.white-text.pink.darken-1
+      {:style {:margin-top "40px" :padding-top "30px" :padding-bottom "40px"}}
+      [:div.container.card-content
+       [:span.card-title {:style {:margin-bottom "30px"}}
+        "Compound digital assets by 5% - 100% annually through staking."
+        ]
+       
+      [tabs "tabs1"
+       [
+        {:title "What is staking?"
+         :text [
+                [:p "Proof of Stake is replacing Proof of Work aka cryptocurrency mining. Investors of PoS currencies can participate in governance and collect staking rewards of $2.5 BN+ annually."]
+                ]}
+        {:title "How can I earn?"
+         :text [
+                [:p "Staking Digital automatically allocates your assets to the highest yielding opportunities."]
+                [:p "We make it simple for investors to choose a specific basket of opportunities that best suits their risk profile, and then automatically allocates capital to maximize the yield."]]} 
+        ]
+       ]
+       ]
+      ]
+
+     [:div.card.white-text.yellow.darken-2
+      {:style {:margin-top "40px" :padding-top "30px" :padding-bottom "40px"}}
+      [:div.container.card-content
+       [:span.card-title {:style {:margin-bottom "30px"}}
+        "Cryptocurrency exchanges integrated under a single dashboard."
+        ]
+       
+      [tabs "tabs2"
+       [
+        {:title "Recap your gains" :text ""}
+        {:title "Discover new assets" :text ""}
+        {:title "Sell at the best time" :text ""}
+        ]
+       ]
+       ]
+      ]
+
+     ]
+    ]
+   
+   
    [:div.container 
     {:style {:margin-top "60px" :margin-bottom "60px"}}
     [:h3 "Whale Watch"]
@@ -230,7 +285,7 @@ data
    
    ;[tabs]
 [:footer.page-footer.indigo.darken-3
-  [:div.container
+ [:div.container
    [:div.row
     [:div.col.l6.s12
      [:h5.white-text "Staking Digital"]
@@ -247,7 +302,11 @@ data
   [:div.footer-copyright
    [:div.container
     "\n            © 2020 All rights reserved.\n            "
-    [:a.grey-text.text-lighten-4.right {:href "https://zgen.hu"} "Z Gen Kibernetika"]]]]
+    [:a.grey-text.text-lighten-4.right {:href "https://zgen.hu"} "Z Gen Kibernetika"]]]
+  
+     [:h6.center.indigo.darken-4.yellow-text {:style {:margin-bottom 0 :padding "17px"}}
+      [:i {:style {:opacity 1}} "for Investors by Investors"]]
+  ]
 ])
 
 
