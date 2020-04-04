@@ -86,50 +86,7 @@ extraSeries
 (.setData
   areaSeries
   #js
-   [#js {:time "2018-10-19", :value 219.31}
-    #js {:time "2018-10-22", :value 220.65}
-    #js {:time "2018-10-23", :value 222.73}
-    #js {:time "2018-10-24", :value 215.09}
-    #js {:time "2018-10-25", :value 219.8}
-    #js {:time "2018-10-26", :value 216.3}
-    #js {:time "2018-10-29", :value 212.24}
-    #js {:time "2018-10-30", :value 213.3}
-    #js {:time "2018-10-31", :value 218.86}
-    #js {:time "2018-11-01", :value 222.22}
-    #js {:time "2018-11-02", :value 207.48}
-    #js {:time "2018-11-05", :value 201.59}
-    #js {:time "2018-11-06", :value 203.77}
-    #js {:time "2018-11-07", :value 209.95}
-    #js {:time "2018-11-08", :value 208.49}
-    #js {:time "2018-11-09", :value 204.47}
-    #js {:time "2018-11-12", :value 194.17}
-    #js {:time "2018-11-13", :value 192.23}
-    #js {:time "2018-11-14", :value 186.8}
-    #js {:time "2018-11-15", :value 191.41}
-    #js {:time "2018-11-16", :value 193.53}
-    #js {:time "2018-11-19", :value 185.86}
-    #js {:time "2018-11-20", :value 176.98}
-    #js {:time "2018-11-21", :value 176.78}
-    #js {:time "2018-11-23", :value 172.29}
-    #js {:time "2018-11-26", :value 174.62}
-    #js {:time "2018-11-27", :value 174.24}
-    #js {:time "2018-11-28", :value 180.94}
-    #js {:time "2018-11-29", :value 179.55}
-    #js {:time "2018-11-30", :value 178.58}
-    #js {:time "2018-12-03", :value 184.82}
-    #js {:time "2018-12-04", :value 176.69}
-    #js {:time "2018-12-06", :value 174.72}
-    #js {:time "2018-12-07", :value 168.49}
-    #js {:time "2018-12-10", :value 169.6}
-    #js {:time "2018-12-11", :value 168.63}
-    #js {:time "2018-12-12", :value 169.1}
-    #js {:time "2018-12-13", :value 170.95}
-    #js {:time "2018-12-14", :value 165.48}
-    #js {:time "2018-12-17", :value 163.94}
-    #js {:time "2018-12-18", :value 166.07}
-    #js {:time "2018-12-19", :value 160.89}
-    #js {:time "2018-12-20", :value 156.83}
-    #js {:time "2018-12-21", :value 150.73}
+   [
     #js {:time "2018-12-24", :value 146.83}
     #js {:time "2018-12-26", :value 157.17}
     #js {:time "2018-12-27", :value 156.15}
@@ -223,45 +180,7 @@ extraSeries
 (.setData
   extraSeries
   #js
-   [#js {:time "2018-10-19", :value 44} #js {:time "2018-10-22", :value 43.14}
-    #js {:time "2018-10-23", :value 42.3} #js {:time "2018-10-24", :value 40.99}
-    #js {:time "2018-10-25", :value 41.59} #js {:time "2018-10-26", :value 41.1}
-    #js {:time "2018-10-29", :value 41.03}
-    #js {:time "2018-10-30", :value 42.21}
-    #js {:time "2018-10-31", :value 43.37}
-    #js {:time "2018-11-01", :value 42.65} #js {:time "2018-11-02", :value 41.6}
-    #js {:time "2018-11-05", :value 42.61}
-    #js {:time "2018-11-06", :value 42.66}
-    #js {:time "2018-11-07", :value 43.11}
-    #js {:time "2018-11-08", :value 41.27}
-    #js {:time "2018-11-09", :value 41.24}
-    #js {:time "2018-11-12", :value 40.87}
-    #js {:time "2018-11-13", :value 39.81}
-    #js {:time "2018-11-14", :value 40.33}
-    #js {:time "2018-11-15", :value 41.16}
-    #js {:time "2018-11-16", :value 40.84}
-    #js {:time "2018-11-19", :value 40.92} #js {:time "2018-11-20", :value 40.1}
-    #js {:time "2018-11-21", :value 41.27}
-    #js {:time "2018-11-23", :value 39.89}
-    #js {:time "2018-11-26", :value 40.53}
-    #js {:time "2018-11-27", :value 40.32}
-    #js {:time "2018-11-28", :value 40.84}
-    #js {:time "2018-11-29", :value 40.48}
-    #js {:time "2018-11-30", :value 40.35}
-    #js {:time "2018-12-03", :value 41.19}
-    #js {:time "2018-12-04", :value 40.95}
-    #js {:time "2018-12-06", :value 39.59}
-    #js {:time "2018-12-07", :value 39.51}
-    #js {:time "2018-12-10", :value 39.37}
-    #js {:time "2018-12-11", :value 39.08}
-    #js {:time "2018-12-12", :value 39.05}
-    #js {:time "2018-12-13", :value 39.29}
-    #js {:time "2018-12-14", :value 38.66}
-    #js {:time "2018-12-17", :value 38.41}
-    #js {:time "2018-12-18", :value 37.82}
-    #js {:time "2018-12-19", :value 37.65}
-    #js {:time "2018-12-20", :value 37.26}
-    #js {:time "2018-12-21", :value 37.67}
+   [
     #js {:time "2018-12-24", :value 36.65}
     #js {:time "2018-12-26", :value 38.06}
     #js {:time "2018-12-27", :value 37.73}
