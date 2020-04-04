@@ -385,7 +385,7 @@ extraSeries
        [:div
 
          [:div.input-field.col.s12
-    [:input#initial.validate {:type "number"}]
+    [:input#initial.validate.white-text {:type "number"}]
     [:label {:for "initial"} "Initial investment in EUR"]]
 
          [:form
@@ -1111,6 +1111,19 @@ data
      [forecast-chart] 
      ]
     ]
+
+[:div.black.darken-4 {:style {:margin-top "0px" :margin-bottom "30px" :padding "30px"}}
+   [:div.container 
+         [:div.input-field.col.s12
+    [:input#email.validate.yellow-text {:type "text"}]
+    [:label.yellow-text {:for "email"} "Email Address"]]
+      
+      ]
+     [:center 
+     [:a.waves-effect.waves-light.btn-large.yellow.darken-1.pink-text
+      [:i.material-icons.left "trending_up"]
+    "Request Access"]]
+     ]
 
    [:div.container 
     {:style {:margin-top "60px" :margin-bottom "60px"}}
