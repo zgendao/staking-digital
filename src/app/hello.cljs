@@ -218,21 +218,7 @@ extraSeries
     #js {:time "2019-05-01", :value 210.52}
     #js {:time "2019-05-02", :value 209.15}
     #js {:time "2019-05-03", :value 211.75}
-    #js {:time "2019-05-06", :value 208.48}
-    #js {:time "2019-05-07", :value 202.86}
-    #js {:time "2019-05-08", :value 202.9}
-    #js {:time "2019-05-09", :value 200.72}
-    #js {:time "2019-05-10", :value 197.18}
-    #js {:time "2019-05-13", :value 185.72}
-    #js {:time "2019-05-14", :value 188.66}
-    #js {:time "2019-05-15", :value 190.92}
-    #js {:time "2019-05-16", :value 190.08} #js {:time "2019-05-17", :value 189}
-    #js {:time "2019-05-20", :value 183.09}
-    #js {:time "2019-05-21", :value 186.6}
-    #js {:time "2019-05-22", :value 182.78}
-    #js {:time "2019-05-23", :value 179.66}
-    #js {:time "2019-05-24", :value 178.97}
-    #js {:time "2019-05-28", :value 179.07}])
+])
 
 (.setData
   extraSeries
@@ -362,21 +348,7 @@ extraSeries
     #js {:time "2019-05-01", :value 43.08}
     #js {:time "2019-05-02", :value 42.63}
     #js {:time "2019-05-03", :value 43.08}
-    #js {:time "2019-05-06", :value 42.93}
-    #js {:time "2019-05-07", :value 42.22}
-    #js {:time "2019-05-08", :value 42.28}
-    #js {:time "2019-05-09", :value 41.65} #js {:time "2019-05-10", :value 41.5}
-    #js {:time "2019-05-13", :value 41.23}
-    #js {:time "2019-05-14", :value 41.55}
-    #js {:time "2019-05-15", :value 41.77}
-    #js {:time "2019-05-16", :value 42.28}
-    #js {:time "2019-05-17", :value 42.34}
-    #js {:time "2019-05-20", :value 42.58}
-    #js {:time "2019-05-21", :value 42.75}
-    #js {:time "2019-05-22", :value 42.34}
-    #js {:time "2019-05-23", :value 41.34}
-    #js {:time "2019-05-24", :value 41.76}
-    #js {:time "2019-05-28", :value 41.625}])
+])
 
 
          ))
