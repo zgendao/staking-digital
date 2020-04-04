@@ -2,6 +2,10 @@ body, html {
 background: #283593;
 }
 
+#app {
+background: white;
+}
+
 @media only screen and (max-width: 768px) {
   h1 {
     font-size: 2.28rem;
