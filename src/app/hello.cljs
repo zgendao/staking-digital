@@ -197,7 +197,7 @@ data
   )
 
 (defn hello []
-  [:<>
+  [:<> {:style {:background "white"}}
    
    [:div.banner
     {:style 
@@ -218,7 +218,7 @@ data
                    }}]
     [:h1 {:style {:z-index 1 :color "white"}} "Staking Digital"]
     [:h4 {:style {:z-index 1 :color "white" :margin 0 :opacity 0.8}}"accessible. simple. powerful."]
-    [:h4 {:style {:z-index 1 :color "white" :margin 0}} "High-efficiency crypto services"]
+    [:h6 {:style {:z-index 1 :color "white" :margin 0}} "High-efficiency crypto services"]
     ]
     
      
