@@ -223,7 +223,7 @@ data
     
      
    ;[statistics]
-   [:div.container {:style {:background "white"}}
+   [:div.container 
     {:style {:margin-top "60px" :margin-bottom "60px"}}
     [:h3 "Whale Watch"]
     [trades]]
