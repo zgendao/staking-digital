@@ -197,7 +197,7 @@ data
   )
 
 (defn hello []
-  [:<> {:style {:background "white"}}
+  [:<> 
    
    [:div.banner
     {:style 
@@ -218,12 +218,12 @@ data
                    }}]
     [:h1 {:style {:z-index 1 :color "white"}} "Staking Digital"]
     [:h4 {:style {:z-index 1 :color "white" :margin 0 :opacity 0.8}}"accessible. simple. powerful."]
-    [:h6 {:style {:z-index 1 :color "white" :margin 0}} "High-efficiency crypto services"]
+    [:h4 {:style {:z-index 1 :color "white" :margin 0}} "High-efficiency crypto services"]
     ]
     
      
    ;[statistics]
-   [:div.container
+   [:div.container {:style {:background "white"}}
     {:style {:margin-top "60px" :margin-bottom "60px"}}
     [:h3 "Whale Watch"]
     [trades]]
