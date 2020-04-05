@@ -2,7 +2,7 @@
   (:require
     [reagent.core :as r]
     [app.api :as api]
-    [app.util :refer [memory storage exp]]
+    [app.util :refer [memory storage exp mobile?]]
     [app.charts :refer [forecast-chart live-chart]]
     [app.stats :refer [trades]]
     [app.components :as component]
@@ -81,9 +81,9 @@
        
       [component/tabs "tabs2"
        [
-        {:title "Recap your gains" :text ""}
-        {:title "Discover new assets" :text ""}
-        {:title "Sell at the best time" :text ""}
+        {:title "Recap your gains" :text [[:p "Always know exactly how much your portfolio worths in fiat and follow the progression of your invested assets."]]}
+        {:title "Discover new assets" :text [[:p "Keeping track with the digital assets is hard. New opportunities will be recommended to you after first announcements."]]}
+        {:title "Sell at the best time" :text [[:p "A smart recommendation system helps you make the decision about an exit."]]}
         ]
        ]
        ]
@@ -92,22 +92,23 @@
      ]
     ]
    
-;   [:div.white-text 
-;    {:style 
-;     {
-;      :background-color "#100841"
-;      :margin 0 :position "relative" :display "block"
-;                                  :padding-top "60px" :padding-bottom "60px"}}
-;    [:div.container
-;     [:h3.pink-text {:style {:margin-bottom "60px"}} "Measure your potential"]
-;    
-;
-;     [forecast-chart] 
-;     ]
-;;    ]
+   [:div.white-text 
+    {:style 
+     {
+      :background-color "#100841"
+      :margin 0 :position "relative" :display "block"
+                                  :padding-top "60px" :padding-bottom "60px"}}
+    [:div.container
+     [:h3.pink-text {:style {:text-align (when-not (mobile?) "center") :margin-bottom "60px"}} "Measure your potential"]
+    
+
+     [forecast-chart] 
+     ]
+    ]
 
 [:div.black.darken-4 {:style {:margin "0px" :padding-bottom "60px" :padding-top "30px"}}
    [:div.container 
+     [:h3.yellow-text {:style {:margin-bottom "60px"}} "Live Demo"]
          [:div.input-field.col.s12
     [:input#email.validate.yellow-text {:type "text"}]
     [:label.yellow-text {:for "email"} "Email Address"]]
@@ -147,7 +148,7 @@
      (map
        (fn [{:keys [price size]}]
          [:div.pink {:key (str "sell"price)
-                     :style {
+                     :style {:max-height "600px"
                         :width "10px" :height (str (* 10 size)"px")}}]
          )
       (sort-by :price 
@@ -182,7 +183,7 @@
      (map
        (fn [{:keys [price size]}]
          [:div.teal {:key (str "bux"price)
-                     :style {
+                     :style {:max-height "600px"
                         :width "10px" :height (str (* 10 size)"px")}}]
          )
       (sort-by :price 

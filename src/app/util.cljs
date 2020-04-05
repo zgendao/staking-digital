@@ -44,3 +44,6 @@
               v2))]
     (when (some identity vs)
       (reduce #(rec-merge %1 %2) v vs))))
+
+(defn mobile? []
+  (< (.-innerWidth js/window) 768))

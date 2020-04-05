@@ -2,7 +2,7 @@
   (:require
     [reagent.core :as r]
     [app.api :as api]
-    [app.util :refer [memory storage exp]]
+    [app.util :refer [mobile? memory storage exp]]
     ["lightweight-charts" :as charts]
     ["moment" :as moment]
     ["materialize-css" :as materialize]
@@ -250,40 +250,60 @@ extraSeries
      (fn []
        [:div
 
+      [:div.container
          [:div.input-field.col.s12
     [:input#initial.validate.white-text {:type "number"}]
     [:label {:for "initial"} "Initial investment in EUR"]]
-
-         [:form {:style {:display "flex"}}
-    [:p.z-depth-3
-     {:style {:margin "30px" :padding "30px"}}
+]
+         [:form (when-not (mobile?) {:style {:display "flex" :margin-bottom 0}})
+    [:p
+     (when-not (mobile?) {:style {:width "calc(100% / 3 - 60px)" :margin "30px" :padding "30px"}})
      [:label
-      [:input
+       [:input
        {:type "radio", :name "group1"}]
       [:span.white-text "I am a conservative investor or represent an institutional fund"]
       [:br]
       [:b "Only AAA cryptocurrency protocols will be involved in your portfolio."]
-      ]]
-    [:p.z-depth-3
-     {:style {:margin "30px" :padding "30px"}}
+      ]
+     [:br] 
+     [:br] 
+     [:img {:src "eth.png"}]
+      [:img {:src "xtz.png"}]
+      [:img {:src "cro.png"}]
+      [:img {:src "atom.png"}]
+      (when (mobile?) [:img {:src "dash.png"}])
+      ]
+    [:p
+     (when-not (mobile?) {:style {:width "calc(100% / 3 - 60px)" :margin "30px" :padding "30px"}})
      [:label
       [:input {:type "radio", :name "group1"}]
-      [:span.white-text "I take risk occasionally"]
+      [:span.white-text "I aim for the best profit"]
       [:br]
       [:b "Your portfolio will be expanded to new cryptocurrency stars with estabilished ecosystems."]
-      ]]
-    [:p.z-depth-3
-     {:style {:margin "30px" :padding "30px"}}
+      ]
+     [:br] 
+     [:br] 
+      [:img {:src "snx.png"}]
+      [:img {:src "one.png"}]
+      (when (mobile?) [:img {:src "matic.png"}])
+      [:img {:src "coti.png"}]
+      [:img {:src "erd.png"}]
+      ]
+    [:p
+     (when-not (mobile?) {:style {:width "calc(100% / 3 - 60px)" :margin "30px" :padding "30px"}})
      [:label
       [:input.with-gap {:type "radio", :name "group1"}]
       [:span.white-text "Include high-risk assets in my portfolio"]
       [:br]
       [:b "Diversify to the hidden gems, carefully selected by our experts."]
-      ]]
+      ]
+     [:br] 
+     [:br] 
+      [:img {:src "tomo.png"}]
+      [:img {:src "lpt.png"}]
+      [:img {:src "pcx.png"}]
+     ]
     ]
-
-
-
 
         [:div#forecast-chart]])}))
 
