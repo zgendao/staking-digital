@@ -78,11 +78,49 @@
           (clj->js {}))
           (clj->js {}))
         ]
-    (.on exchange "trade" callback)
+    (.on
+      exchange
+      "trade" 
+      (fn [market]
+        (let [market (x/obj->clj market)
+              data {
+                    :name :trade
+                    :pair pair
+                    :side (if (= (get market "side") "buy") :buy :sell)
+                    :amount 
+                    (cond
+                      (= (get market "exchange") "BitMEX")
+                      (double (/ (x/safe-read (get market "amount"))
+                                 (x/safe-read (get market "price"))))
+                      :else (x/safe-read (get market "amount")))
+                    :price (x/safe-read (get market "price"))
+                    :exchange (get market "exchange")
+                    :unix (get market "unix")
+                    }]
+          (callback data))))
+
     (.subscribeTrades exchange market)
-    
-    ;(.on exchange "l2snapshot" (fn [snapshot] (.log js/console snapshot)))
-    ;(.subscribeLevel2Snapshots exchange market)
+  
+    (when-not (#{:bittrex :gemini} xc) 
+      (.on 
+        exchange
+        "l2snapshot"
+        (fn [snapshot]
+          (let [
+                snapshot (x/obj->clj snapshot)
+                data 
+                {
+                 :name :book
+                 :pair pair
+                 :asks (mapv (fn [x] (let [x (x/obj->clj x)] {:price (x/safe-read (get x "price")) :size (x/safe-read (get x "size"))})) (get snapshot "asks"))
+                 :bids (mapv (fn [x] (let [x (x/obj->clj x)] {:price (x/safe-read (get x "price")) :size (x/safe-read (get x "size"))})) (get snapshot "bids")) 
+                 :exchange (get snapshot "exchange")
+                 :unix (get snapshot "timestampMs")
+                 }
+                ]
+            (callback data))))
+      (.subscribeLevel2Snapshots exchange market)
+      )
     ) 
   )
 
@@ -131,32 +169,25 @@
               :huobi :kucoin :okex :poloniex :upbit :zb]]
     (ws-subscribe
       xc :btc-usd 
-      (fn [market] 
-        (let [market (x/obj->clj market)
-              data {
-                    :name :trade
-                    :side (if (= (get market "side") "buy") :buy :sell)
-                    :amount 
-                    (cond
-                      (= (get market "exchange") "BitMEX")
-                      (double (/ (x/safe-read (get market "amount")) (x/safe-read (get market "price"))))
-                      :else (x/safe-read (get market "amount")))
-                    :price (x/safe-read (get market "price"))
-                    :exchange (get market "exchange")
-                    :unix (get market "unix")
-                    }
-              ]
-          (swap! storage conj data)
-          
-             (when (< 1 (:amount data))
-               (.forEach 
-               (.-clients wss)
-               (fn [client]
-                 (.send client
-                        (t/write (t/writer :json) data)
-                        ))))
-          )
-        )))
+      (fn [data] 
+        (case (:name data)
+          :trade
+          (when (< 1 (:amount data))
+          (.forEach 
+            (.-clients wss)
+            (fn [client]
+              (.send client
+                     (t/write (t/writer :json) data)
+                     ))))
+          :book
+          (.forEach 
+            (.-clients wss)
+            (fn [client]
+              (.send client
+                     (t/write (t/writer :json) data)
+                     )))
+        ))
+      ))
 
     
     ;(set!
