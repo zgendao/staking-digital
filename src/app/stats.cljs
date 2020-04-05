@@ -31,7 +31,7 @@
          [:b (pprint/cl-format nil "~,2f" (:amount trade))"₿"]
          " at "(:exchange trade)
          ]
-        [:div {:style {:position "absolute" :right "30px" :top "20px"}}
+        [:div {:style {:position "absolute" :right "30px" :top "15px"}}
          (case (:side trade)
            :buy [:i.material-icons.teal.white-text "arrow_drop_up"]
            :sell [:i.material-icons.pink.white-text "arrow_drop_down"]

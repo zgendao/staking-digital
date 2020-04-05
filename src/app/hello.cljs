@@ -92,19 +92,19 @@
      ]
     ]
    
-   [:div.white-text 
-    {:style 
-     {
-      :background-color "#100841"
-      :margin 0 :position "relative" :display "block"
-                                  :padding-top "60px" :padding-bottom "60px"}}
-    [:div.container
-     [:h3.pink-text {:style {:margin-bottom "60px"}} "Measure your potential"]
-    
-
-     [forecast-chart] 
-     ]
-    ]
+;   [:div.white-text 
+;    {:style 
+;     {
+;      :background-color "#100841"
+;      :margin 0 :position "relative" :display "block"
+;                                  :padding-top "60px" :padding-bottom "60px"}}
+;    [:div.container
+;     [:h3.pink-text {:style {:margin-bottom "60px"}} "Measure your potential"]
+;    
+;
+;     [forecast-chart] 
+;     ]
+;;    ]
 
 [:div.black.darken-4 {:style {:margin "0px" :padding-bottom "60px" :padding-top "30px"}}
    [:div.container 
