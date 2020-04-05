@@ -20,8 +20,8 @@
   (let [
         uri 
         (str 
-          "ws://localhost:8080/"
-          ;"ws://95.217.184.184:8080/"
+          ;"ws://localhost:8080/"
+          "ws://95.217.184.184:8080/"
           path)
         ws (new js/WebSocket uri)
         ]
